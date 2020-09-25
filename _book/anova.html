@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 ANOVA | SPAQ Results</title>
+  <meta name="description" content="Results from various statistical analysis run on the SPAQ dataset." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 7 ANOVA | SPAQ Results" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Results from various statistical analysis run on the SPAQ dataset." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 ANOVA | SPAQ Results" />
+  
+  <meta name="twitter:description" content="Results from various statistical analysis run on the SPAQ dataset." />
+  
+
+<meta name="author" content="Tazmilur Saad" />
+
+
+<meta name="date" content="2020-09-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="bayesian-information-criterion.html"/>
+<link rel="next" href="kruskal-wallis.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#feature-selection"><i class="fa fa-check"></i><b>1.1</b> Feature Selection</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#accuracy"><i class="fa fa-check"></i><b>1.2</b> Accuracy</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
+<li class="chapter" data-level="3" data-path="univariate-logistic-regression.html"><a href="univariate-logistic-regression.html"><i class="fa fa-check"></i><b>3</b> Univariate Logistic Regression</a><ul>
+<li class="chapter" data-level="3.1" data-path="univariate-logistic-regression.html"><a href="univariate-logistic-regression.html#univariate-lr-without-age-sociostatus"><i class="fa fa-check"></i><b>3.1</b> Univariate LR Without AGE &amp; SOCIOSTATUS</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="univariate-logistic-regression.html"><a href="univariate-logistic-regression.html#one-way"><i class="fa fa-check"></i><b>3.1.1</b> One-Way</a></li>
+<li class="chapter" data-level="3.1.2" data-path="univariate-logistic-regression.html"><a href="univariate-logistic-regression.html#two-way"><i class="fa fa-check"></i><b>3.1.2</b> Two-Way</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="univariate-logistic-regression.html"><a href="univariate-logistic-regression.html#univariate-lr-with-age-sociostatus"><i class="fa fa-check"></i><b>3.2</b> Univariate LR With AGE &amp; SOCIOSTATUS</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="univariate-logistic-regression.html"><a href="univariate-logistic-regression.html#one-way-1"><i class="fa fa-check"></i><b>3.2.1</b> One-Way</a></li>
+<li class="chapter" data-level="3.2.2" data-path="univariate-logistic-regression.html"><a href="univariate-logistic-regression.html#two-way-1"><i class="fa fa-check"></i><b>3.2.2</b> Two-Way</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html"><i class="fa fa-check"></i><b>4</b> Multivariate Logistic Regression</a><ul>
+<li class="chapter" data-level="4.1" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html#without-age-sociostatus"><i class="fa fa-check"></i><b>4.1</b> Without AGE &amp; SOCIOSTATUS</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html#spaq"><i class="fa fa-check"></i><b>4.1.1</b> SPAQ</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html#multivariate-lr-with-age-sociostatus"><i class="fa fa-check"></i><b>4.2</b> Multivariate LR With AGE &amp; SOCIOSTATUS</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html#spaq-1"><i class="fa fa-check"></i><b>4.2.1</b> SPAQ</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="fishers-exact-test.html"><a href="fishers-exact-test.html"><i class="fa fa-check"></i><b>5</b> Fisher’s Exact Test</a><ul>
+<li class="chapter" data-level="5.1" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html#without-age-sociostatus"><i class="fa fa-check"></i><b>5.1</b> Without AGE &amp; SOCIOSTATUS</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html#spaq"><i class="fa fa-check"></i><b>5.1.1</b> SPAQ</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="fishers-exact-test.html"><a href="fishers-exact-test.html#with-age-sociostatus"><i class="fa fa-check"></i><b>5.2</b> With AGE &amp; SOCIOSTATUS</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html#spaq-1"><i class="fa fa-check"></i><b>5.2.1</b> SPAQ</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="bayesian-information-criterion.html"><a href="bayesian-information-criterion.html"><i class="fa fa-check"></i><b>6</b> Bayesian Information Criterion</a><ul>
+<li class="chapter" data-level="6.1" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html#without-age-sociostatus"><i class="fa fa-check"></i><b>6.1</b> Without AGE &amp; SOCIOSTATUS</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html#spaq"><i class="fa fa-check"></i><b>6.1.1</b> SPAQ</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="fishers-exact-test.html"><a href="fishers-exact-test.html#with-age-sociostatus"><i class="fa fa-check"></i><b>6.2</b> With AGE &amp; SOCIOSTATUS</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html#spaq-1"><i class="fa fa-check"></i><b>6.2.1</b> SPAQ</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>7</b> ANOVA</a><ul>
+<li class="chapter" data-level="7.0.1" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html#spaq"><i class="fa fa-check"></i><b>7.0.1</b> SPAQ</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="kruskal-wallis.html"><a href="kruskal-wallis.html"><i class="fa fa-check"></i><b>8</b> Kruskal-Wallis</a><ul>
+<li class="chapter" data-level="8.0.1" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html#spaq"><i class="fa fa-check"></i><b>8.0.1</b> SPAQ</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="association-analysis.html"><a href="association-analysis.html"><i class="fa fa-check"></i><b>9</b> Association Analysis</a><ul>
+<li class="chapter" data-level="9.1" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html#spaq"><i class="fa fa-check"></i><b>9.1</b> SPAQ</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">SPAQ Results</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="anova" class="section level1">
+<h1><span class="header-section-number">Chapter 7</span> ANOVA</h1>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">create_table &lt;-<span class="st"> </span><span class="cf">function</span>(dataframe, label) {</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">  kableExtra<span class="op">::</span><span class="kw">kable_styling</span>(knitr<span class="op">::</span><span class="kw">kable</span>(dataframe, <span class="dt">booktabs =</span> <span class="ot">TRUE</span>, </a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">      <span class="dt">caption =</span> label), <span class="dt">font_size =</span> <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">}</a></code></pre></div>
+<div id="spaq" class="section level3">
+<h3><span class="header-section-number">7.0.1</span> SPAQ</h3>
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-85">Table 7.1: </span>Gender and PER3C
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Sum.Sq
+</th>
+<th style="text-align:right;">
+Df
+</th>
+<th style="text-align:right;">
+F.value
+</th>
+<th style="text-align:right;">
+Pr..F.
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:right;">
+10538.77141
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+424.9259194
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+gender
+</td>
+<td style="text-align:right;">
+182.65616
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+7.3647424
+</td>
+<td style="text-align:right;">
+0.0074253
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+per3c
+</td>
+<td style="text-align:right;">
+238.59597
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4.8101248
+</td>
+<td style="text-align:right;">
+0.0094371
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+gender:per3c
+</td>
+<td style="text-align:right;">
+16.35309
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0.3296804
+</td>
+<td style="text-align:right;">
+0.7196698
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Residuals
+</td>
+<td style="text-align:right;">
+3745.01627
+</td>
+<td style="text-align:right;">
+151
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-86">Table 7.2: </span>Gender
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Sum.Sq
+</th>
+<th style="text-align:right;">
+Df
+</th>
+<th style="text-align:right;">
+F.value
+</th>
+<th style="text-align:right;">
+Pr..F.
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:right;">
+11068.6389
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+426.83695
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+gender
+</td>
+<td style="text-align:right;">
+262.8809
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+10.13741
+</td>
+<td style="text-align:right;">
+0.0017563
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Residuals
+</td>
+<td style="text-align:right;">
+4019.4248
+</td>
+<td style="text-align:right;">
+155
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-87">Table 7.3: </span>PER3C
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Sum.Sq
+</th>
+<th style="text-align:right;">
+Df
+</th>
+<th style="text-align:right;">
+F.value
+</th>
+<th style="text-align:right;">
+Pr..F.
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:right;">
+16898.0186
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+653.613159
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+per3c
+</td>
+<td style="text-align:right;">
+300.9066
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+5.819514
+</td>
+<td style="text-align:right;">
+0.0036607
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Residuals
+</td>
+<td style="text-align:right;">
+3981.3991
+</td>
+<td style="text-align:right;">
+154
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-88">Table 7.4: </span>Age
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Sum.Sq
+</th>
+<th style="text-align:right;">
+Df
+</th>
+<th style="text-align:right;">
+F.value
+</th>
+<th style="text-align:right;">
+Pr..F.
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:right;">
+5497.7975
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+208.430357
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+age
+</td>
+<td style="text-align:right;">
+193.8484
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+7.349107
+</td>
+<td style="text-align:right;">
+0.0074665
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Residuals
+</td>
+<td style="text-align:right;">
+4088.4573
+</td>
+<td style="text-align:right;">
+155
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<div id="tukey" class="section level4">
+<h4><span class="header-section-number">7.0.1.1</span> Tukey</h4>
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-89">Table 7.5: </span>PER3C Tukey
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Row.names
+</th>
+<th style="text-align:right;">
+SPAQ.x
+</th>
+<th style="text-align:right;">
+std
+</th>
+<th style="text-align:right;">
+r
+</th>
+<th style="text-align:right;">
+Min
+</th>
+<th style="text-align:right;">
+Max
+</th>
+<th style="text-align:right;">
+Q25
+</th>
+<th style="text-align:right;">
+Q50
+</th>
+<th style="text-align:right;">
+Q75
+</th>
+<th style="text-align:right;">
+SPAQ.y
+</th>
+<th style="text-align:left;">
+groups
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+GG
+</td>
+<td style="text-align:right;">
+8.509434
+</td>
+<td style="text-align:right;">
+5.692852
+</td>
+<td style="text-align:right;">
+53
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+4.00
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+8.509434
+</td>
+<td style="text-align:left;">
+b
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GT
+</td>
+<td style="text-align:right;">
+10.807692
+</td>
+<td style="text-align:right;">
+5.179289
+</td>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+7.75
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+10.807692
+</td>
+<td style="text-align:left;">
+ab
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TT
+</td>
+<td style="text-align:right;">
+11.807692
+</td>
+<td style="text-align:right;">
+4.265863
+</td>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+8.00
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+11.807692
+</td>
+<td style="text-align:left;">
+a
+</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="bayesian-information-criterion.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="kruskal-wallis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["spaq-results.pdf", "spaq-results.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

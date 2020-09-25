@@ -1,0 +1,2081 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Univariate Logistic Regression | SPAQ Results</title>
+  <meta name="description" content="Results from various statistical analysis run on the SPAQ dataset." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Univariate Logistic Regression | SPAQ Results" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Results from various statistical analysis run on the SPAQ dataset." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Univariate Logistic Regression | SPAQ Results" />
+  
+  <meta name="twitter:description" content="Results from various statistical analysis run on the SPAQ dataset." />
+  
+
+<meta name="author" content="Tazmilur Saad" />
+
+
+<meta name="date" content="2020-09-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="intro.html"/>
+<link rel="next" href="multivariate-logistic-regression.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#feature-selection"><i class="fa fa-check"></i><b>1.1</b> Feature Selection</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#accuracy"><i class="fa fa-check"></i><b>1.2</b> Accuracy</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
+<li class="chapter" data-level="3" data-path="univariate-logistic-regression.html"><a href="univariate-logistic-regression.html"><i class="fa fa-check"></i><b>3</b> Univariate Logistic Regression</a><ul>
+<li class="chapter" data-level="3.1" data-path="univariate-logistic-regression.html"><a href="univariate-logistic-regression.html#univariate-lr-without-age-sociostatus"><i class="fa fa-check"></i><b>3.1</b> Univariate LR Without AGE &amp; SOCIOSTATUS</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="univariate-logistic-regression.html"><a href="univariate-logistic-regression.html#one-way"><i class="fa fa-check"></i><b>3.1.1</b> One-Way</a></li>
+<li class="chapter" data-level="3.1.2" data-path="univariate-logistic-regression.html"><a href="univariate-logistic-regression.html#two-way"><i class="fa fa-check"></i><b>3.1.2</b> Two-Way</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="univariate-logistic-regression.html"><a href="univariate-logistic-regression.html#univariate-lr-with-age-sociostatus"><i class="fa fa-check"></i><b>3.2</b> Univariate LR With AGE &amp; SOCIOSTATUS</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="univariate-logistic-regression.html"><a href="univariate-logistic-regression.html#one-way-1"><i class="fa fa-check"></i><b>3.2.1</b> One-Way</a></li>
+<li class="chapter" data-level="3.2.2" data-path="univariate-logistic-regression.html"><a href="univariate-logistic-regression.html#two-way-1"><i class="fa fa-check"></i><b>3.2.2</b> Two-Way</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html"><i class="fa fa-check"></i><b>4</b> Multivariate Logistic Regression</a><ul>
+<li class="chapter" data-level="4.1" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html#without-age-sociostatus"><i class="fa fa-check"></i><b>4.1</b> Without AGE &amp; SOCIOSTATUS</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html#spaq"><i class="fa fa-check"></i><b>4.1.1</b> SPAQ</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html#multivariate-lr-with-age-sociostatus"><i class="fa fa-check"></i><b>4.2</b> Multivariate LR With AGE &amp; SOCIOSTATUS</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html#spaq-1"><i class="fa fa-check"></i><b>4.2.1</b> SPAQ</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="fishers-exact-test.html"><a href="fishers-exact-test.html"><i class="fa fa-check"></i><b>5</b> Fisher’s Exact Test</a><ul>
+<li class="chapter" data-level="5.1" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html#without-age-sociostatus"><i class="fa fa-check"></i><b>5.1</b> Without AGE &amp; SOCIOSTATUS</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html#spaq"><i class="fa fa-check"></i><b>5.1.1</b> SPAQ</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="fishers-exact-test.html"><a href="fishers-exact-test.html#with-age-sociostatus"><i class="fa fa-check"></i><b>5.2</b> With AGE &amp; SOCIOSTATUS</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html#spaq-1"><i class="fa fa-check"></i><b>5.2.1</b> SPAQ</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="bayesian-information-criterion.html"><a href="bayesian-information-criterion.html"><i class="fa fa-check"></i><b>6</b> Bayesian Information Criterion</a><ul>
+<li class="chapter" data-level="6.1" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html#without-age-sociostatus"><i class="fa fa-check"></i><b>6.1</b> Without AGE &amp; SOCIOSTATUS</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html#spaq"><i class="fa fa-check"></i><b>6.1.1</b> SPAQ</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="fishers-exact-test.html"><a href="fishers-exact-test.html#with-age-sociostatus"><i class="fa fa-check"></i><b>6.2</b> With AGE &amp; SOCIOSTATUS</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html#spaq-1"><i class="fa fa-check"></i><b>6.2.1</b> SPAQ</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>7</b> ANOVA</a><ul>
+<li class="chapter" data-level="7.0.1" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html#spaq"><i class="fa fa-check"></i><b>7.0.1</b> SPAQ</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="kruskal-wallis.html"><a href="kruskal-wallis.html"><i class="fa fa-check"></i><b>8</b> Kruskal-Wallis</a><ul>
+<li class="chapter" data-level="8.0.1" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html#spaq"><i class="fa fa-check"></i><b>8.0.1</b> SPAQ</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="association-analysis.html"><a href="association-analysis.html"><i class="fa fa-check"></i><b>9</b> Association Analysis</a><ul>
+<li class="chapter" data-level="9.1" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html#spaq"><i class="fa fa-check"></i><b>9.1</b> SPAQ</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">SPAQ Results</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="univariate-logistic-regression" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> Univariate Logistic Regression</h1>
+<div id="univariate-lr-without-age-sociostatus" class="section level2">
+<h2><span class="header-section-number">3.1</span> Univariate LR Without AGE &amp; SOCIOSTATUS</h2>
+<div id="one-way" class="section level3">
+<h3><span class="header-section-number">3.1.1</span> One-Way</h3>
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-4">Table 3.1: </span>Combined Gender
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+Variable_Name
+</th>
+<th style="text-align:left;">
+Odds_Ratio
+</th>
+<th style="text-align:left;">
+Conf_25
+</th>
+<th style="text-align:left;">
+Conf_75
+</th>
+<th style="text-align:left;">
+P_Value
+</th>
+<th style="text-align:right;">
+Adjusted_P
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+PER3CGG
+</td>
+<td style="text-align:left;">
+0.227272727273199
+</td>
+<td style="text-align:left;">
+0.0975549041352851
+</td>
+<td style="text-align:left;">
+0.508180730351168
+</td>
+<td style="text-align:left;">
+0.000411696995346484
+</td>
+<td style="text-align:right;">
+0.0078222
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+16
+</td>
+<td style="text-align:left;">
+GENDER
+</td>
+<td style="text-align:left;">
+0.30344827586282
+</td>
+<td style="text-align:left;">
+0.133759707879388
+</td>
+<td style="text-align:left;">
+0.649142158137773
+</td>
+<td style="text-align:left;">
+0.00287032506268841
+</td>
+<td style="text-align:right;">
+0.0272681
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+17
+</td>
+<td style="text-align:left;">
+VNTRAB
+</td>
+<td style="text-align:left;">
+2.0069033530572
+</td>
+<td style="text-align:left;">
+1.0547512487672
+</td>
+<td style="text-align:left;">
+3.86729008622909
+</td>
+<td style="text-align:left;">
+0.0351252462973447
+</td>
+<td style="text-align:right;">
+0.2224599
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-5">Table 3.2: </span>Males only.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+Variable_Name
+</th>
+<th style="text-align:left;">
+Odds_Ratio
+</th>
+<th style="text-align:left;">
+Conf_25
+</th>
+<th style="text-align:left;">
+Conf_75
+</th>
+<th style="text-align:left;">
+P_Value
+</th>
+<th style="text-align:right;">
+Adjusted_P
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+15
+</td>
+<td style="text-align:left;">
+VNTRAB
+</td>
+<td style="text-align:left;">
+5.06666666666204
+</td>
+<td style="text-align:left;">
+1.18010671756351
+</td>
+<td style="text-align:left;">
+27.3227737688292
+</td>
+<td style="text-align:left;">
+0.0378946593648082
+</td>
+<td style="text-align:right;">
+0.4895161
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-6">Table 3.3: </span>Females only.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+Variable_Name
+</th>
+<th style="text-align:left;">
+Odds_Ratio
+</th>
+<th style="text-align:left;">
+Conf_25
+</th>
+<th style="text-align:left;">
+Conf_75
+</th>
+<th style="text-align:left;">
+P_Value
+</th>
+<th style="text-align:right;">
+Adjusted_P
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+PER3CGG
+</td>
+<td style="text-align:left;">
+0.242666666666814
+</td>
+<td style="text-align:left;">
+0.0937301989026722
+</td>
+<td style="text-align:left;">
+0.598641494678204
+</td>
+<td style="text-align:left;">
+0.00263346268487356
+</td>
+<td style="text-align:right;">
+0.0500358
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="two-way" class="section level3">
+<h3><span class="header-section-number">3.1.2</span> Two-Way</h3>
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-8">Table 3.4: </span>Combined Genders
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+Variable_Name
+</th>
+<th style="text-align:left;">
+Odds_Ratio
+</th>
+<th style="text-align:left;">
+Conf_25
+</th>
+<th style="text-align:left;">
+Conf_75
+</th>
+<th style="text-align:left;">
+P_Value
+</th>
+<th style="text-align:right;">
+Adjusted_P
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+135
+</td>
+<td style="text-align:left;">
+PER3CGG
+</td>
+<td style="text-align:left;">
+0.227272727273199
+</td>
+<td style="text-align:left;">
+0.0975549041352851
+</td>
+<td style="text-align:left;">
+0.508180730351168
+</td>
+<td style="text-align:left;">
+0.000411696995346484
+</td>
+<td style="text-align:right;">
+0.0843979
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+74
+</td>
+<td style="text-align:left;">
+PER3BPER3CGGGG
+</td>
+<td style="text-align:left;">
+0.230769230769231
+</td>
+<td style="text-align:left;">
+0.0924901131894047
+</td>
+<td style="text-align:left;">
+0.550160581075923
+</td>
+<td style="text-align:left;">
+0.00120546198609651
+</td>
+<td style="text-align:right;">
+0.0946634
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+47
+</td>
+<td style="text-align:left;">
+PER3APER3CCCGG
+</td>
+<td style="text-align:left;">
+0.227586206897181
+</td>
+<td style="text-align:left;">
+0.0889574759783941
+</td>
+<td style="text-align:left;">
+0.551267756621802
+</td>
+<td style="text-align:left;">
+0.00138531842898899
+</td>
+<td style="text-align:right;">
+0.0946634
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+202
+</td>
+<td style="text-align:left;">
+GENDER
+</td>
+<td style="text-align:left;">
+0.30344827586282
+</td>
+<td style="text-align:left;">
+0.133759707879388
+</td>
+<td style="text-align:left;">
+0.649142158137773
+</td>
+<td style="text-align:left;">
+0.00287032506268841
+</td>
+<td style="text-align:right;">
+0.1471042
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+120
+</td>
+<td style="text-align:left;">
+PER3CCRY2GGAA
+</td>
+<td style="text-align:left;">
+0.0833333333333544
+</td>
+<td style="text-align:left;">
+0.0112751177542012
+</td>
+<td style="text-align:left;">
+0.387364521117471
+</td>
+<td style="text-align:left;">
+0.00411350878115466
+</td>
+<td style="text-align:right;">
+0.1686539
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+103
+</td>
+<td style="text-align:left;">
+PER3CCLOCK3111GGTT
+</td>
+<td style="text-align:left;">
+0.254629629629629
+</td>
+<td style="text-align:left;">
+0.0857317828962758
+</td>
+<td style="text-align:left;">
+0.712092001663036
+</td>
+<td style="text-align:left;">
+0.0108207601219429
+</td>
+<td style="text-align:right;">
+0.3202606
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+121
+</td>
+<td style="text-align:left;">
+PER3CCRY2GGAG
+</td>
+<td style="text-align:left;">
+0.200000000000422
+</td>
+<td style="text-align:left;">
+0.0542685280657494
+</td>
+<td style="text-align:left;">
+0.662921870240319
+</td>
+<td style="text-align:left;">
+0.0109357276964846
+</td>
+<td style="text-align:right;">
+0.3202606
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+105
+</td>
+<td style="text-align:left;">
+PER3CCLOCK3111GGTC
+</td>
+<td style="text-align:left;">
+0.151515151515151
+</td>
+<td style="text-align:left;">
+0.0288849667407917
+</td>
+<td style="text-align:left;">
+0.615302944683957
+</td>
+<td style="text-align:left;">
+0.0132019168920168
+</td>
+<td style="text-align:right;">
+0.3382991
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+124
+</td>
+<td style="text-align:left;">
+PER3CCRY2GTGG
+</td>
+<td style="text-align:left;">
+0.181818181818731
+</td>
+<td style="text-align:left;">
+0.0404885767227292
+</td>
+<td style="text-align:left;">
+0.691500938691838
+</td>
+<td style="text-align:left;">
+0.0167194387358797
+</td>
+<td style="text-align:right;">
+0.3808317
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+113
+</td>
+<td style="text-align:left;">
+PER3CCRY1GGCG
+</td>
+<td style="text-align:left;">
+0.1794871794876
+</td>
+<td style="text-align:left;">
+0.0376230361971006
+</td>
+<td style="text-align:left;">
+0.724578334135988
+</td>
+<td style="text-align:left;">
+0.0209128617239236
+</td>
+<td style="text-align:right;">
+0.4287137
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+70
+</td>
+<td style="text-align:left;">
+PER3AVNTRCCAB
+</td>
+<td style="text-align:left;">
+2.38
+</td>
+<td style="text-align:left;">
+1.12897902776582
+</td>
+<td style="text-align:left;">
+5.12402953145517
+</td>
+<td style="text-align:left;">
+0.0241931245980937
+</td>
+<td style="text-align:right;">
+0.4508719
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+131
+</td>
+<td style="text-align:left;">
+PER3CVNTRTTAB
+</td>
+<td style="text-align:left;">
+4.19999999999974
+</td>
+<td style="text-align:left;">
+1.17599192080156
+</td>
+<td style="text-align:left;">
+16.7579178244486
+</td>
+<td style="text-align:left;">
+0.0319544509513889
+</td>
+<td style="text-align:right;">
+0.5458885
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+112
+</td>
+<td style="text-align:left;">
+PER3CCRY1GGGG
+</td>
+<td style="text-align:left;">
+0.274509803921696
+</td>
+<td style="text-align:left;">
+0.074332583735944
+</td>
+<td style="text-align:left;">
+0.935037982570734
+</td>
+<td style="text-align:left;">
+0.0434944217101849
+</td>
+<td style="text-align:right;">
+0.6858736
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+PER2PER3CAAGG
+</td>
+<td style="text-align:left;">
+0.177777777777779
+</td>
+<td style="text-align:left;">
+0.0239656403013218
+</td>
+<td style="text-align:left;">
+0.851466982255629
+</td>
+<td style="text-align:left;">
+0.0477246950354573
+</td>
+<td style="text-align:right;">
+0.6875750
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-9">Table 3.5: </span>Males only.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+Variable_Name
+</th>
+<th style="text-align:left;">
+Odds_Ratio
+</th>
+<th style="text-align:left;">
+Conf_25
+</th>
+<th style="text-align:left;">
+Conf_75
+</th>
+<th style="text-align:left;">
+P_Value
+</th>
+<th style="text-align:right;">
+Adjusted_P
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+183
+</td>
+<td style="text-align:left;">
+CRY2VNTRAGAB
+</td>
+<td style="text-align:left;">
+7.22222222222204
+</td>
+<td style="text-align:left;">
+1.40183112518296
+</td>
+<td style="text-align:left;">
+44.2955818145829
+</td>
+<td style="text-align:left;">
+0.0214030532658643
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+42
+</td>
+<td style="text-align:left;">
+PER3APER3BCCAG
+</td>
+<td style="text-align:left;">
+11.9999999999619
+</td>
+<td style="text-align:left;">
+1.28667104614422
+</td>
+<td style="text-align:left;">
+268.504280393739
+</td>
+<td style="text-align:left;">
+0.045358590893824
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-10">Table 3.6: </span>Females only.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+Variable_Name
+</th>
+<th style="text-align:left;">
+Odds_Ratio
+</th>
+<th style="text-align:left;">
+Conf_25
+</th>
+<th style="text-align:left;">
+Conf_75
+</th>
+<th style="text-align:left;">
+P_Value
+</th>
+<th style="text-align:right;">
+Adjusted_P
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+135
+</td>
+<td style="text-align:left;">
+PER3CGG
+</td>
+<td style="text-align:left;">
+0.242666666666814
+</td>
+<td style="text-align:left;">
+0.0937301989026722
+</td>
+<td style="text-align:left;">
+0.598641494678204
+</td>
+<td style="text-align:left;">
+0.00263346268487356
+</td>
+<td style="text-align:right;">
+0.5398599
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+47
+</td>
+<td style="text-align:left;">
+PER3APER3CCCGG
+</td>
+<td style="text-align:left;">
+0.24074074074087
+</td>
+<td style="text-align:left;">
+0.0848931830312777
+</td>
+<td style="text-align:left;">
+0.64361640922811
+</td>
+<td style="text-align:left;">
+0.00557586270558726
+</td>
+<td style="text-align:right;">
+0.5715259
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+74
+</td>
+<td style="text-align:left;">
+PER3BPER3CGGGG
+</td>
+<td style="text-align:left;">
+0.270833333333333
+</td>
+<td style="text-align:left;">
+0.0975385975526932
+</td>
+<td style="text-align:left;">
+0.713525208176681
+</td>
+<td style="text-align:left;">
+0.00968155293342499
+</td>
+<td style="text-align:right;">
+0.6615728
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+105
+</td>
+<td style="text-align:left;">
+PER3CCLOCK3111GGTC
+</td>
+<td style="text-align:left;">
+0.133333333333333
+</td>
+<td style="text-align:left;">
+0.0227734298723106
+</td>
+<td style="text-align:left;">
+0.613748317627573
+</td>
+<td style="text-align:left;">
+0.0143878607107416
+</td>
+<td style="text-align:right;">
+0.7373779
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+121
+</td>
+<td style="text-align:left;">
+PER3CCRY2GGAG
+</td>
+<td style="text-align:left;">
+0.198863636363636
+</td>
+<td style="text-align:left;">
+0.0461845847413069
+</td>
+<td style="text-align:left;">
+0.75444082894854
+</td>
+<td style="text-align:left;">
+0.0218639184559964
+</td>
+<td style="text-align:right;">
+0.8184758
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+120
+</td>
+<td style="text-align:left;">
+PER3CCRY2GGAA
+</td>
+<td style="text-align:left;">
+0.125
+</td>
+<td style="text-align:left;">
+0.0156738953964237
+</td>
+<td style="text-align:left;">
+0.667129055259578
+</td>
+<td style="text-align:left;">
+0.0239553894478388
+</td>
+<td style="text-align:right;">
+0.8184758
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+181
+</td>
+<td style="text-align:left;">
+CRY2VNTRAAAB
+</td>
+<td style="text-align:left;">
+11.9999987703511
+</td>
+<td style="text-align:left;">
+1.82658436540546
+</td>
+<td style="text-align:left;">
+240.198131450782
+</td>
+<td style="text-align:left;">
+0.0282427037497149
+</td>
+<td style="text-align:right;">
+0.8271078
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+204
+</td>
+<td style="text-align:left;">
+CRY2VNTRAAAB
+</td>
+<td style="text-align:left;">
+9.27272632254396
+</td>
+<td style="text-align:left;">
+1.68742970321701
+</td>
+<td style="text-align:left;">
+173.178708303577
+</td>
+<td style="text-align:left;">
+0.0367719052295213
+</td>
+<td style="text-align:right;">
+0.9422801
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+131
+</td>
+<td style="text-align:left;">
+PER3CVNTRTTAB
+</td>
+<td style="text-align:left;">
+4.92592592592593
+</td>
+<td style="text-align:left;">
+1.09769290466062
+</td>
+<td style="text-align:left;">
+27.3309257100772
+</td>
+<td style="text-align:left;">
+0.0462346908007556
+</td>
+<td style="text-align:right;">
+0.9816660
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+PER2PER3CAAGG
+</td>
+<td style="text-align:left;">
+0.104761904766183
+</td>
+<td style="text-align:left;">
+0.00519909528363511
+</td>
+<td style="text-align:left;">
+0.709120919785382
+</td>
+<td style="text-align:left;">
+0.047886147265472
+</td>
+<td style="text-align:right;">
+0.9816660
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="univariate-lr-with-age-sociostatus" class="section level2">
+<h2><span class="header-section-number">3.2</span> Univariate LR With AGE &amp; SOCIOSTATUS</h2>
+<div id="one-way-1" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> One-Way</h3>
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-12">Table 3.7: </span>Combined Gender
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+Variable_Name
+</th>
+<th style="text-align:left;">
+Odds_Ratio
+</th>
+<th style="text-align:left;">
+Conf_25
+</th>
+<th style="text-align:left;">
+Conf_75
+</th>
+<th style="text-align:left;">
+P_Value
+</th>
+<th style="text-align:right;">
+Adjusted_P
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+PER3CGG
+</td>
+<td style="text-align:left;">
+0.227272727273199
+</td>
+<td style="text-align:left;">
+0.0975549041352851
+</td>
+<td style="text-align:left;">
+0.508180730351168
+</td>
+<td style="text-align:left;">
+0.000411696995346484
+</td>
+<td style="text-align:right;">
+0.0078222
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+18
+</td>
+<td style="text-align:left;">
+socio_0.0
+</td>
+<td style="text-align:left;">
+2.62923728813439
+</td>
+<td style="text-align:left;">
+1.08947146368149
+</td>
+<td style="text-align:left;">
+6.83959012764843
+</td>
+<td style="text-align:left;">
+0.036852532130051
+</td>
+<td style="text-align:right;">
+0.2991168
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+19
+</td>
+<td style="text-align:left;">
+AGE
+</td>
+<td style="text-align:left;">
+2.9671641790958
+</td>
+<td style="text-align:left;">
+1.07072653813104
+</td>
+<td style="text-align:left;">
+9.59047390104809
+</td>
+<td style="text-align:left;">
+0.0472289728473742
+</td>
+<td style="text-align:right;">
+0.2991168
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-13">Table 3.8: </span>Males only.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+Variable_Name
+</th>
+<th style="text-align:left;">
+Odds_Ratio
+</th>
+<th style="text-align:left;">
+Conf_25
+</th>
+<th style="text-align:left;">
+Conf_75
+</th>
+<th style="text-align:left;">
+P_Value
+</th>
+<th style="text-align:right;">
+Adjusted_P
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+16
+</td>
+<td style="text-align:left;">
+socio_3.0
+</td>
+<td style="text-align:left;">
+0.217687074826395
+</td>
+<td style="text-align:left;">
+0.0455504532042167
+</td>
+<td style="text-align:left;">
+0.914187691284944
+</td>
+<td style="text-align:left;">
+0.0426035878324996
+</td>
+<td style="text-align:right;">
+0.4038728
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-14">Table 3.9: </span>Females only.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+Variable_Name
+</th>
+<th style="text-align:left;">
+Odds_Ratio
+</th>
+<th style="text-align:left;">
+Conf_25
+</th>
+<th style="text-align:left;">
+Conf_75
+</th>
+<th style="text-align:left;">
+P_Value
+</th>
+<th style="text-align:right;">
+Adjusted_P
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+PER3CGG
+</td>
+<td style="text-align:left;">
+0.242666666666814
+</td>
+<td style="text-align:left;">
+0.0937301989026722
+</td>
+<td style="text-align:left;">
+0.598641494678204
+</td>
+<td style="text-align:left;">
+0.00263346268487356
+</td>
+<td style="text-align:right;">
+0.0500358
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="two-way-1" class="section level3">
+<h3><span class="header-section-number">3.2.2</span> Two-Way</h3>
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-16">Table 3.10: </span>Combined Genders
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+Variable_Name
+</th>
+<th style="text-align:left;">
+Odds_Ratio
+</th>
+<th style="text-align:left;">
+Conf_25
+</th>
+<th style="text-align:left;">
+Conf_75
+</th>
+<th style="text-align:left;">
+P_Value
+</th>
+<th style="text-align:right;">
+Adjusted_P
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+135
+</td>
+<td style="text-align:left;">
+PER3CGG
+</td>
+<td style="text-align:left;">
+0.227272727273199
+</td>
+<td style="text-align:left;">
+0.0975549041352851
+</td>
+<td style="text-align:left;">
+0.508180730351168
+</td>
+<td style="text-align:left;">
+0.000411696995346484
+</td>
+<td style="text-align:right;">
+0.0843979
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+74
+</td>
+<td style="text-align:left;">
+PER3BPER3CGGGG
+</td>
+<td style="text-align:left;">
+0.230769230769231
+</td>
+<td style="text-align:left;">
+0.0924901131894047
+</td>
+<td style="text-align:left;">
+0.550160581075923
+</td>
+<td style="text-align:left;">
+0.00120546198609651
+</td>
+<td style="text-align:right;">
+0.0946634
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+47
+</td>
+<td style="text-align:left;">
+PER3APER3CCCGG
+</td>
+<td style="text-align:left;">
+0.227586206897181
+</td>
+<td style="text-align:left;">
+0.0889574759783941
+</td>
+<td style="text-align:left;">
+0.551267756621802
+</td>
+<td style="text-align:left;">
+0.00138531842898899
+</td>
+<td style="text-align:right;">
+0.0946634
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+120
+</td>
+<td style="text-align:left;">
+PER3CCRY2GGAA
+</td>
+<td style="text-align:left;">
+0.0833333333333544
+</td>
+<td style="text-align:left;">
+0.0112751177542012
+</td>
+<td style="text-align:left;">
+0.387364521117471
+</td>
+<td style="text-align:left;">
+0.00411350878115466
+</td>
+<td style="text-align:right;">
+0.2108173
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+103
+</td>
+<td style="text-align:left;">
+PER3CCLOCK3111GGTT
+</td>
+<td style="text-align:left;">
+0.254629629629629
+</td>
+<td style="text-align:left;">
+0.0857317828962758
+</td>
+<td style="text-align:left;">
+0.712092001663036
+</td>
+<td style="text-align:left;">
+0.0108207601219429
+</td>
+<td style="text-align:right;">
+0.3736374
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+121
+</td>
+<td style="text-align:left;">
+PER3CCRY2GGAG
+</td>
+<td style="text-align:left;">
+0.200000000000422
+</td>
+<td style="text-align:left;">
+0.0542685280657494
+</td>
+<td style="text-align:left;">
+0.662921870240319
+</td>
+<td style="text-align:left;">
+0.0109357276964846
+</td>
+<td style="text-align:right;">
+0.3736374
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+105
+</td>
+<td style="text-align:left;">
+PER3CCLOCK3111GGTC
+</td>
+<td style="text-align:left;">
+0.151515151515151
+</td>
+<td style="text-align:left;">
+0.0288849667407917
+</td>
+<td style="text-align:left;">
+0.615302944683957
+</td>
+<td style="text-align:left;">
+0.0132019168920168
+</td>
+<td style="text-align:right;">
+0.3866276
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+124
+</td>
+<td style="text-align:left;">
+PER3CCRY2GTGG
+</td>
+<td style="text-align:left;">
+0.181818181818731
+</td>
+<td style="text-align:left;">
+0.0404885767227292
+</td>
+<td style="text-align:left;">
+0.691500938691838
+</td>
+<td style="text-align:left;">
+0.0167194387358797
+</td>
+<td style="text-align:right;">
+0.4284356
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+113
+</td>
+<td style="text-align:left;">
+PER3CCRY1GGCG
+</td>
+<td style="text-align:left;">
+0.1794871794876
+</td>
+<td style="text-align:left;">
+0.0376230361971006
+</td>
+<td style="text-align:left;">
+0.724578334135988
+</td>
+<td style="text-align:left;">
+0.0209128617239236
+</td>
+<td style="text-align:right;">
+0.4763485
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+70
+</td>
+<td style="text-align:left;">
+PER3AVNTRCCAB
+</td>
+<td style="text-align:left;">
+2.38
+</td>
+<td style="text-align:left;">
+1.12897902776582
+</td>
+<td style="text-align:left;">
+5.12402953145517
+</td>
+<td style="text-align:left;">
+0.0241931245980937
+</td>
+<td style="text-align:right;">
+0.4959591
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+131
+</td>
+<td style="text-align:left;">
+PER3CVNTRTTAB
+</td>
+<td style="text-align:left;">
+4.19999999999974
+</td>
+<td style="text-align:left;">
+1.17599192080156
+</td>
+<td style="text-align:left;">
+16.7579178244486
+</td>
+<td style="text-align:left;">
+0.0319544509513889
+</td>
+<td style="text-align:right;">
+0.5955148
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+204
+</td>
+<td style="text-align:left;">
+socio_0.0
+</td>
+<td style="text-align:left;">
+2.62923728813439
+</td>
+<td style="text-align:left;">
+1.08947146368149
+</td>
+<td style="text-align:left;">
+6.83959012764843
+</td>
+<td style="text-align:left;">
+0.036852532130051
+</td>
+<td style="text-align:right;">
+0.6295641
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+112
+</td>
+<td style="text-align:left;">
+PER3CCRY1GGGG
+</td>
+<td style="text-align:left;">
+0.274509803921696
+</td>
+<td style="text-align:left;">
+0.074332583735944
+</td>
+<td style="text-align:left;">
+0.935037982570734
+</td>
+<td style="text-align:left;">
+0.0434944217101849
+</td>
+<td style="text-align:right;">
+0.6522375
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+205
+</td>
+<td style="text-align:left;">
+AGE
+</td>
+<td style="text-align:left;">
+2.9671641790958
+</td>
+<td style="text-align:left;">
+1.07072653813104
+</td>
+<td style="text-align:left;">
+9.59047390104809
+</td>
+<td style="text-align:left;">
+0.0472289728473742
+</td>
+<td style="text-align:right;">
+0.6522375
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+PER2PER3CAAGG
+</td>
+<td style="text-align:left;">
+0.177777777777779
+</td>
+<td style="text-align:left;">
+0.0239656403013218
+</td>
+<td style="text-align:left;">
+0.851466982255629
+</td>
+<td style="text-align:left;">
+0.0477246950354573
+</td>
+<td style="text-align:right;">
+0.6522375
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-17">Table 3.11: </span>Males only.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+Variable_Name
+</th>
+<th style="text-align:left;">
+Odds_Ratio
+</th>
+<th style="text-align:left;">
+Conf_25
+</th>
+<th style="text-align:left;">
+Conf_75
+</th>
+<th style="text-align:left;">
+P_Value
+</th>
+<th style="text-align:right;">
+Adjusted_P
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+184
+</td>
+<td style="text-align:left;">
+socio_3.0
+</td>
+<td style="text-align:left;">
+0.217687074826395
+</td>
+<td style="text-align:left;">
+0.0455504532042167
+</td>
+<td style="text-align:left;">
+0.914187691284944
+</td>
+<td style="text-align:left;">
+0.0426035878324996
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+42
+</td>
+<td style="text-align:left;">
+PER3APER3BCCAG
+</td>
+<td style="text-align:left;">
+11.9999999999619
+</td>
+<td style="text-align:left;">
+1.28667104614422
+</td>
+<td style="text-align:left;">
+268.504280393739
+</td>
+<td style="text-align:left;">
+0.045358590893824
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-18">Table 3.12: </span>Females only.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+Variable_Name
+</th>
+<th style="text-align:left;">
+Odds_Ratio
+</th>
+<th style="text-align:left;">
+Conf_25
+</th>
+<th style="text-align:left;">
+Conf_75
+</th>
+<th style="text-align:left;">
+P_Value
+</th>
+<th style="text-align:right;">
+Adjusted_P
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+135
+</td>
+<td style="text-align:left;">
+PER3CGG
+</td>
+<td style="text-align:left;">
+0.242666666666814
+</td>
+<td style="text-align:left;">
+0.0937301989026722
+</td>
+<td style="text-align:left;">
+0.598641494678204
+</td>
+<td style="text-align:left;">
+0.00263346268487356
+</td>
+<td style="text-align:right;">
+0.5398599
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+47
+</td>
+<td style="text-align:left;">
+PER3APER3CCCGG
+</td>
+<td style="text-align:left;">
+0.24074074074087
+</td>
+<td style="text-align:left;">
+0.0848931830312777
+</td>
+<td style="text-align:left;">
+0.64361640922811
+</td>
+<td style="text-align:left;">
+0.00557586270558726
+</td>
+<td style="text-align:right;">
+0.5715259
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+74
+</td>
+<td style="text-align:left;">
+PER3BPER3CGGGG
+</td>
+<td style="text-align:left;">
+0.270833333333333
+</td>
+<td style="text-align:left;">
+0.0975385975526932
+</td>
+<td style="text-align:left;">
+0.713525208176681
+</td>
+<td style="text-align:left;">
+0.00968155293342499
+</td>
+<td style="text-align:right;">
+0.6615728
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+105
+</td>
+<td style="text-align:left;">
+PER3CCLOCK3111GGTC
+</td>
+<td style="text-align:left;">
+0.133333333333333
+</td>
+<td style="text-align:left;">
+0.0227734298723106
+</td>
+<td style="text-align:left;">
+0.613748317627573
+</td>
+<td style="text-align:left;">
+0.0143878607107416
+</td>
+<td style="text-align:right;">
+0.7373779
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+121
+</td>
+<td style="text-align:left;">
+PER3CCRY2GGAG
+</td>
+<td style="text-align:left;">
+0.198863636363636
+</td>
+<td style="text-align:left;">
+0.0461845847413069
+</td>
+<td style="text-align:left;">
+0.75444082894854
+</td>
+<td style="text-align:left;">
+0.0218639184559964
+</td>
+<td style="text-align:right;">
+0.8184758
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+120
+</td>
+<td style="text-align:left;">
+PER3CCRY2GGAA
+</td>
+<td style="text-align:left;">
+0.125
+</td>
+<td style="text-align:left;">
+0.0156738953964237
+</td>
+<td style="text-align:left;">
+0.667129055259578
+</td>
+<td style="text-align:left;">
+0.0239553894478388
+</td>
+<td style="text-align:right;">
+0.8184758
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+181
+</td>
+<td style="text-align:left;">
+CRY2VNTRAAAB
+</td>
+<td style="text-align:left;">
+11.9999987703511
+</td>
+<td style="text-align:left;">
+1.82658436540546
+</td>
+<td style="text-align:left;">
+240.198131450782
+</td>
+<td style="text-align:left;">
+0.0282427037497149
+</td>
+<td style="text-align:right;">
+0.8271078
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+131
+</td>
+<td style="text-align:left;">
+PER3CVNTRTTAB
+</td>
+<td style="text-align:left;">
+4.92592592592593
+</td>
+<td style="text-align:left;">
+1.09769290466062
+</td>
+<td style="text-align:left;">
+27.3309257100772
+</td>
+<td style="text-align:left;">
+0.0462346908007556
+</td>
+<td style="text-align:right;">
+1.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+PER2PER3CAAGG
+</td>
+<td style="text-align:left;">
+0.104761904766183
+</td>
+<td style="text-align:left;">
+0.00519909528363511
+</td>
+<td style="text-align:left;">
+0.709120919785382
+</td>
+<td style="text-align:left;">
+0.047886147265472
+</td>
+<td style="text-align:right;">
+1.0000000
+</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="multivariate-logistic-regression.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["spaq-results.pdf", "spaq-results.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
