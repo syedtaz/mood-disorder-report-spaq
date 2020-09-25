@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Multivariate Logistic Regression | SPAQ Results</title>
+  <meta name="description" content="Results from various statistical analysis run on the SPAQ dataset." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Multivariate Logistic Regression | SPAQ Results" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Results from various statistical analysis run on the SPAQ dataset." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Multivariate Logistic Regression | SPAQ Results" />
+  
+  <meta name="twitter:description" content="Results from various statistical analysis run on the SPAQ dataset." />
+  
+
+<meta name="author" content="Tazmilur Saad" />
+
+
+<meta name="date" content="2020-09-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="univariate-logistic-regression.html"/>
+<link rel="next" href="fishers-exact-test.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#feature-selection"><i class="fa fa-check"></i><b>1.1</b> Feature Selection</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#accuracy"><i class="fa fa-check"></i><b>1.2</b> Accuracy</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
+<li class="chapter" data-level="3" data-path="univariate-logistic-regression.html"><a href="univariate-logistic-regression.html"><i class="fa fa-check"></i><b>3</b> Univariate Logistic Regression</a><ul>
+<li class="chapter" data-level="3.1" data-path="univariate-logistic-regression.html"><a href="univariate-logistic-regression.html#univariate-lr-without-age-sociostatus"><i class="fa fa-check"></i><b>3.1</b> Univariate LR Without AGE &amp; SOCIOSTATUS</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="univariate-logistic-regression.html"><a href="univariate-logistic-regression.html#one-way"><i class="fa fa-check"></i><b>3.1.1</b> One-Way</a></li>
+<li class="chapter" data-level="3.1.2" data-path="univariate-logistic-regression.html"><a href="univariate-logistic-regression.html#two-way"><i class="fa fa-check"></i><b>3.1.2</b> Two-Way</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="univariate-logistic-regression.html"><a href="univariate-logistic-regression.html#univariate-lr-with-age-sociostatus"><i class="fa fa-check"></i><b>3.2</b> Univariate LR With AGE &amp; SOCIOSTATUS</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="univariate-logistic-regression.html"><a href="univariate-logistic-regression.html#one-way-1"><i class="fa fa-check"></i><b>3.2.1</b> One-Way</a></li>
+<li class="chapter" data-level="3.2.2" data-path="univariate-logistic-regression.html"><a href="univariate-logistic-regression.html#two-way-1"><i class="fa fa-check"></i><b>3.2.2</b> Two-Way</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html"><i class="fa fa-check"></i><b>4</b> Multivariate Logistic Regression</a><ul>
+<li class="chapter" data-level="4.1" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html#without-age-sociostatus"><i class="fa fa-check"></i><b>4.1</b> Without AGE &amp; SOCIOSTATUS</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html#spaq"><i class="fa fa-check"></i><b>4.1.1</b> SPAQ</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html#multivariate-lr-with-age-sociostatus"><i class="fa fa-check"></i><b>4.2</b> Multivariate LR With AGE &amp; SOCIOSTATUS</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html#spaq-1"><i class="fa fa-check"></i><b>4.2.1</b> SPAQ</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="fishers-exact-test.html"><a href="fishers-exact-test.html"><i class="fa fa-check"></i><b>5</b> Fisher’s Exact Test</a><ul>
+<li class="chapter" data-level="5.1" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html#without-age-sociostatus"><i class="fa fa-check"></i><b>5.1</b> Without AGE &amp; SOCIOSTATUS</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html#spaq"><i class="fa fa-check"></i><b>5.1.1</b> SPAQ</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="fishers-exact-test.html"><a href="fishers-exact-test.html#with-age-sociostatus"><i class="fa fa-check"></i><b>5.2</b> With AGE &amp; SOCIOSTATUS</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html#spaq-1"><i class="fa fa-check"></i><b>5.2.1</b> SPAQ</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="bayesian-information-criterion.html"><a href="bayesian-information-criterion.html"><i class="fa fa-check"></i><b>6</b> Bayesian Information Criterion</a><ul>
+<li class="chapter" data-level="6.1" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html#without-age-sociostatus"><i class="fa fa-check"></i><b>6.1</b> Without AGE &amp; SOCIOSTATUS</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html#spaq"><i class="fa fa-check"></i><b>6.1.1</b> SPAQ</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="fishers-exact-test.html"><a href="fishers-exact-test.html#with-age-sociostatus"><i class="fa fa-check"></i><b>6.2</b> With AGE &amp; SOCIOSTATUS</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html#spaq-1"><i class="fa fa-check"></i><b>6.2.1</b> SPAQ</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>7</b> ANOVA</a><ul>
+<li class="chapter" data-level="7.0.1" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html#spaq"><i class="fa fa-check"></i><b>7.0.1</b> SPAQ</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="kruskal-wallis.html"><a href="kruskal-wallis.html"><i class="fa fa-check"></i><b>8</b> Kruskal-Wallis</a><ul>
+<li class="chapter" data-level="8.0.1" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html#spaq"><i class="fa fa-check"></i><b>8.0.1</b> SPAQ</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="association-analysis.html"><a href="association-analysis.html"><i class="fa fa-check"></i><b>9</b> Association Analysis</a><ul>
+<li class="chapter" data-level="9.1" data-path="multivariate-logistic-regression.html"><a href="multivariate-logistic-regression.html#spaq"><i class="fa fa-check"></i><b>9.1</b> SPAQ</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">SPAQ Results</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="multivariate-logistic-regression" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> Multivariate Logistic Regression</h1>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">create_table &lt;-<span class="st"> </span><span class="cf">function</span>(dataframe, label) {</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">  kableExtra<span class="op">::</span><span class="kw">kable_styling</span>(knitr<span class="op">::</span><span class="kw">kable</span>(dataframe <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(P_Value <span class="op">&lt;=</span><span class="fl">0.05</span>), <span class="dt">booktabs =</span> <span class="ot">TRUE</span>, </a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">      <span class="dt">caption =</span> label), <span class="dt">font_size =</span> <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">}</a></code></pre></div>
+<div id="without-age-sociostatus" class="section level2">
+<h2><span class="header-section-number">4.1</span> Without AGE &amp; SOCIOSTATUS</h2>
+<div id="spaq" class="section level3">
+<h3><span class="header-section-number">4.1.1</span> SPAQ</h3>
+<div id="one-way" class="section level4">
+<h4><span class="header-section-number">4.1.1.1</span> One-Way</h4>
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-24">Table 4.1: </span>Combined Gender
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable_Name
+</th>
+<th style="text-align:right;">
+Odds_Ratio
+</th>
+<th style="text-align:right;">
+Conf_25
+</th>
+<th style="text-align:right;">
+Conf_75
+</th>
+<th style="text-align:right;">
+P_Value
+</th>
+<th style="text-align:right;">
+Adjusted_P
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+GENDER
+</td>
+<td style="text-align:right;">
+0.2313361
+</td>
+<td style="text-align:right;">
+0.0892070
+</td>
+<td style="text-align:right;">
+0.5568761
+</td>
+<td style="text-align:right;">
+0.0016100
+</td>
+<td style="text-align:right;">
+0.0134283
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PER3CGG
+</td>
+<td style="text-align:right;">
+0.2214945
+</td>
+<td style="text-align:right;">
+0.0839468
+</td>
+<td style="text-align:right;">
+0.5560780
+</td>
+<td style="text-align:right;">
+0.0016785
+</td>
+<td style="text-align:right;">
+0.0134283
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+VNTRAB
+</td>
+<td style="text-align:right;">
+2.3925616
+</td>
+<td style="text-align:right;">
+1.0706988
+</td>
+<td style="text-align:right;">
+5.5391964
+</td>
+<td style="text-align:right;">
+0.0365558
+</td>
+<td style="text-align:right;">
+0.1949645
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-25">Table 4.2: </span>Males only.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable_Name
+</th>
+<th style="text-align:right;">
+Odds_Ratio
+</th>
+<th style="text-align:right;">
+Conf_25
+</th>
+<th style="text-align:right;">
+Conf_75
+</th>
+<th style="text-align:right;">
+P_Value
+</th>
+<th style="text-align:right;">
+Adjusted_P
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-26">Table 4.3: </span>Females only.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable_Name
+</th>
+<th style="text-align:right;">
+Odds_Ratio
+</th>
+<th style="text-align:right;">
+Conf_25
+</th>
+<th style="text-align:right;">
+Conf_75
+</th>
+<th style="text-align:right;">
+P_Value
+</th>
+<th style="text-align:right;">
+Adjusted_P
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+PER3CGG
+</td>
+<td style="text-align:right;">
+0.1939346
+</td>
+<td style="text-align:right;">
+0.0646113
+</td>
+<td style="text-align:right;">
+0.5381482
+</td>
+<td style="text-align:right;">
+0.002255
+</td>
+<td style="text-align:right;">
+0.0338253
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="two-way" class="section level4">
+<h4><span class="header-section-number">4.1.1.2</span> Two-Way</h4>
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-28">Table 4.4: </span>Combined Genders Top-10
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable_Name
+</th>
+<th style="text-align:right;">
+Odds_Ratio
+</th>
+<th style="text-align:right;">
+Conf_25
+</th>
+<th style="text-align:right;">
+Conf_75
+</th>
+<th style="text-align:right;">
+P_Value
+</th>
+<th style="text-align:right;">
+Adjusted_P
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+GENDER
+</td>
+<td style="text-align:right;">
+0.2469858
+</td>
+<td style="text-align:right;">
+0.0922936
+</td>
+<td style="text-align:right;">
+0.5998681
+</td>
+<td style="text-align:right;">
+0.0030873
+</td>
+<td style="text-align:right;">
+0.0308729
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PER3CVNTRTTAB
+</td>
+<td style="text-align:right;">
+4.5974695
+</td>
+<td style="text-align:right;">
+1.5052162
+</td>
+<td style="text-align:right;">
+17.1647852
+</td>
+<td style="text-align:right;">
+0.0122098
+</td>
+<td style="text-align:right;">
+0.0610488
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PER2CRY1GGCC
+</td>
+<td style="text-align:right;">
+5.8364139
+</td>
+<td style="text-align:right;">
+1.3256830
+</td>
+<td style="text-align:right;">
+36.2792446
+</td>
+<td style="text-align:right;">
+0.0316893
+</td>
+<td style="text-align:right;">
+0.1001595
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PER3CCRY2GGAA
+</td>
+<td style="text-align:right;">
+0.1716687
+</td>
+<td style="text-align:right;">
+0.0227305
+</td>
+<td style="text-align:right;">
+0.7607638
+</td>
+<td style="text-align:right;">
+0.0400638
+</td>
+<td style="text-align:right;">
+0.1001595
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-29">Table 4.5: </span>Combined Genders Top-20
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable_Name
+</th>
+<th style="text-align:right;">
+Odds_Ratio
+</th>
+<th style="text-align:right;">
+Conf_25
+</th>
+<th style="text-align:right;">
+Conf_75
+</th>
+<th style="text-align:right;">
+P_Value
+</th>
+<th style="text-align:right;">
+Adjusted_P
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+GENDER
+</td>
+<td style="text-align:right;">
+0.1776222
+</td>
+<td style="text-align:right;">
+0.0550337
+</td>
+<td style="text-align:right;">
+0.4899765
+</td>
+<td style="text-align:right;">
+0.0016882
+</td>
+<td style="text-align:right;">
+0.0337650
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PER3CVNTRTTAB
+</td>
+<td style="text-align:right;">
+4.5454131
+</td>
+<td style="text-align:right;">
+1.3734399
+</td>
+<td style="text-align:right;">
+17.8251959
+</td>
+<td style="text-align:right;">
+0.0183076
+</td>
+<td style="text-align:right;">
+0.1680146
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PER3CCRY2GTAA
+</td>
+<td style="text-align:right;">
+7.6665742
+</td>
+<td style="text-align:right;">
+1.5154854
+</td>
+<td style="text-align:right;">
+61.4057792
+</td>
+<td style="text-align:right;">
+0.0252022
+</td>
+<td style="text-align:right;">
+0.1680146
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-30">Table 4.6: </span>Males only Top-10
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable_Name
+</th>
+<th style="text-align:right;">
+Odds_Ratio
+</th>
+<th style="text-align:right;">
+Conf_25
+</th>
+<th style="text-align:right;">
+Conf_75
+</th>
+<th style="text-align:right;">
+P_Value
+</th>
+<th style="text-align:right;">
+Adjusted_P
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-31">Table 4.7: </span>Males only Top-20
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable_Name
+</th>
+<th style="text-align:right;">
+Odds_Ratio
+</th>
+<th style="text-align:right;">
+Conf_25
+</th>
+<th style="text-align:right;">
+Conf_75
+</th>
+<th style="text-align:right;">
+P_Value
+</th>
+<th style="text-align:right;">
+Adjusted_P
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-32">Table 4.8: </span>Females only Top-10
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable_Name
+</th>
+<th style="text-align:right;">
+Odds_Ratio
+</th>
+<th style="text-align:right;">
+Conf_25
+</th>
+<th style="text-align:right;">
+Conf_75
+</th>
+<th style="text-align:right;">
+P_Value
+</th>
+<th style="text-align:right;">
+Adjusted_P
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+PER3CVNTRTTAB
+</td>
+<td style="text-align:right;">
+8.537165
+</td>
+<td style="text-align:right;">
+2.440155
+</td>
+<td style="text-align:right;">
+42.59861
+</td>
+<td style="text-align:right;">
+0.0024057
+</td>
+<td style="text-align:right;">
+0.024057
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-33">Table 4.9: </span>Females only Top-20.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable_Name
+</th>
+<th style="text-align:right;">
+Odds_Ratio
+</th>
+<th style="text-align:right;">
+Conf_25
+</th>
+<th style="text-align:right;">
+Conf_75
+</th>
+<th style="text-align:right;">
+P_Value
+</th>
+<th style="text-align:right;">
+Adjusted_P
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+PER3CVNTRTTAB
+</td>
+<td style="text-align:right;">
+6.273657
+</td>
+<td style="text-align:right;">
+1.454555
+</td>
+<td style="text-align:right;">
+36.86976
+</td>
+<td style="text-align:right;">
+0.0219645
+</td>
+<td style="text-align:right;">
+0.4392896
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="multivariate-lr-with-age-sociostatus" class="section level2">
+<h2><span class="header-section-number">4.2</span> Multivariate LR With AGE &amp; SOCIOSTATUS</h2>
+<div id="spaq-1" class="section level3">
+<h3><span class="header-section-number">4.2.1</span> SPAQ</h3>
+<div id="one-way-1" class="section level4">
+<h4><span class="header-section-number">4.2.1.1</span> One-Way</h4>
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-35">Table 4.10: </span>Combined Gender
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable_Name
+</th>
+<th style="text-align:right;">
+Odds_Ratio
+</th>
+<th style="text-align:right;">
+Conf_25
+</th>
+<th style="text-align:right;">
+Conf_75
+</th>
+<th style="text-align:right;">
+P_Value
+</th>
+<th style="text-align:right;">
+Adjusted_P
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+GENDER
+</td>
+<td style="text-align:right;">
+0.2208841
+</td>
+<td style="text-align:right;">
+0.0821023
+</td>
+<td style="text-align:right;">
+0.5466893
+</td>
+<td style="text-align:right;">
+0.0016627
+</td>
+<td style="text-align:right;">
+0.0216829
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PER3CGG
+</td>
+<td style="text-align:right;">
+0.2233047
+</td>
+<td style="text-align:right;">
+0.0826438
+</td>
+<td style="text-align:right;">
+0.5732476
+</td>
+<td style="text-align:right;">
+0.0022824
+</td>
+<td style="text-align:right;">
+0.0216829
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+VNTRAB
+</td>
+<td style="text-align:right;">
+2.4083814
+</td>
+<td style="text-align:right;">
+1.0480285
+</td>
+<td style="text-align:right;">
+5.7638509
+</td>
+<td style="text-align:right;">
+0.0421101
+</td>
+<td style="text-align:right;">
+0.2503830
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-36">Table 4.11: </span>Males only.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable_Name
+</th>
+<th style="text-align:right;">
+Odds_Ratio
+</th>
+<th style="text-align:right;">
+Conf_25
+</th>
+<th style="text-align:right;">
+Conf_75
+</th>
+<th style="text-align:right;">
+P_Value
+</th>
+<th style="text-align:right;">
+Adjusted_P
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-37">Table 4.12: </span>Females only.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable_Name
+</th>
+<th style="text-align:right;">
+Odds_Ratio
+</th>
+<th style="text-align:right;">
+Conf_25
+</th>
+<th style="text-align:right;">
+Conf_75
+</th>
+<th style="text-align:right;">
+P_Value
+</th>
+<th style="text-align:right;">
+Adjusted_P
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+PER3CGG
+</td>
+<td style="text-align:right;">
+0.1988911
+</td>
+<td style="text-align:right;">
+0.064561
+</td>
+<td style="text-align:right;">
+0.5640807
+</td>
+<td style="text-align:right;">
+0.0032598
+</td>
+<td style="text-align:right;">
+0.0586768
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="two-way-1" class="section level4">
+<h4><span class="header-section-number">4.2.1.2</span> Two-Way</h4>
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-39">Table 4.13: </span>Combined Genders Top-10
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable_Name
+</th>
+<th style="text-align:right;">
+Odds_Ratio
+</th>
+<th style="text-align:right;">
+Conf_25
+</th>
+<th style="text-align:right;">
+Conf_75
+</th>
+<th style="text-align:right;">
+P_Value
+</th>
+<th style="text-align:right;">
+Adjusted_P
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+GENDER
+</td>
+<td style="text-align:right;">
+0.2332037
+</td>
+<td style="text-align:right;">
+0.0864501
+</td>
+<td style="text-align:right;">
+0.5739679
+</td>
+<td style="text-align:right;">
+0.0023612
+</td>
+<td style="text-align:right;">
+0.0236124
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PER3CVNTRTTAB
+</td>
+<td style="text-align:right;">
+5.3143036
+</td>
+<td style="text-align:right;">
+1.7189925
+</td>
+<td style="text-align:right;">
+20.0735482
+</td>
+<td style="text-align:right;">
+0.0066492
+</td>
+<td style="text-align:right;">
+0.0332458
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+socio_0.0
+</td>
+<td style="text-align:right;">
+3.6112387
+</td>
+<td style="text-align:right;">
+1.2613161
+</td>
+<td style="text-align:right;">
+11.4107661
+</td>
+<td style="text-align:right;">
+0.0208914
+</td>
+<td style="text-align:right;">
+0.0622983
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PER3CCRY2GGAA
+</td>
+<td style="text-align:right;">
+0.1267630
+</td>
+<td style="text-align:right;">
+0.0146170
+</td>
+<td style="text-align:right;">
+0.6190337
+</td>
+<td style="text-align:right;">
+0.0249193
+</td>
+<td style="text-align:right;">
+0.0622983
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-40">Table 4.14: </span>Combined Genders Top-20
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable_Name
+</th>
+<th style="text-align:right;">
+Odds_Ratio
+</th>
+<th style="text-align:right;">
+Conf_25
+</th>
+<th style="text-align:right;">
+Conf_75
+</th>
+<th style="text-align:right;">
+P_Value
+</th>
+<th style="text-align:right;">
+Adjusted_P
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+GENDER
+</td>
+<td style="text-align:right;">
+0.1613686
+</td>
+<td style="text-align:right;">
+0.0488222
+</td>
+<td style="text-align:right;">
+0.4562342
+</td>
+<td style="text-align:right;">
+0.0011995
+</td>
+<td style="text-align:right;">
+0.0239891
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PER3CVNTRTTAB
+</td>
+<td style="text-align:right;">
+4.5712062
+</td>
+<td style="text-align:right;">
+1.3722451
+</td>
+<td style="text-align:right;">
+18.0024945
+</td>
+<td style="text-align:right;">
+0.0184844
+</td>
+<td style="text-align:right;">
+0.1702465
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PER3CCRY2GTAA
+</td>
+<td style="text-align:right;">
+7.9551640
+</td>
+<td style="text-align:right;">
+1.5166094
+</td>
+<td style="text-align:right;">
+65.7781497
+</td>
+<td style="text-align:right;">
+0.0255370
+</td>
+<td style="text-align:right;">
+0.1702465
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-41">Table 4.15: </span>Males only Top-10
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable_Name
+</th>
+<th style="text-align:right;">
+Odds_Ratio
+</th>
+<th style="text-align:right;">
+Conf_25
+</th>
+<th style="text-align:right;">
+Conf_75
+</th>
+<th style="text-align:right;">
+P_Value
+</th>
+<th style="text-align:right;">
+Adjusted_P
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-42">Table 4.16: </span>Males only Top-20
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable_Name
+</th>
+<th style="text-align:right;">
+Odds_Ratio
+</th>
+<th style="text-align:right;">
+Conf_25
+</th>
+<th style="text-align:right;">
+Conf_75
+</th>
+<th style="text-align:right;">
+P_Value
+</th>
+<th style="text-align:right;">
+Adjusted_P
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-43">Table 4.17: </span>Females only Top-10
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable_Name
+</th>
+<th style="text-align:right;">
+Odds_Ratio
+</th>
+<th style="text-align:right;">
+Conf_25
+</th>
+<th style="text-align:right;">
+Conf_75
+</th>
+<th style="text-align:right;">
+P_Value
+</th>
+<th style="text-align:right;">
+Adjusted_P
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+PER3CVNTRTTAB
+</td>
+<td style="text-align:right;">
+8.537165
+</td>
+<td style="text-align:right;">
+2.440155
+</td>
+<td style="text-align:right;">
+42.59861
+</td>
+<td style="text-align:right;">
+0.0024057
+</td>
+<td style="text-align:right;">
+0.024057
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-44">Table 4.18: </span>Females only Top-20.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable_Name
+</th>
+<th style="text-align:right;">
+Odds_Ratio
+</th>
+<th style="text-align:right;">
+Conf_25
+</th>
+<th style="text-align:right;">
+Conf_75
+</th>
+<th style="text-align:right;">
+P_Value
+</th>
+<th style="text-align:right;">
+Adjusted_P
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+PER3CVNTRTTAB
+</td>
+<td style="text-align:right;">
+6.454142
+</td>
+<td style="text-align:right;">
+1.519687
+</td>
+<td style="text-align:right;">
+37.6572
+</td>
+<td style="text-align:right;">
+0.019245
+</td>
+<td style="text-align:right;">
+0.3849006
+</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="univariate-logistic-regression.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="fishers-exact-test.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["spaq-results.pdf", "spaq-results.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
