@@ -206,19 +206,423 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">9.1</span> SPAQ</h2>
 <table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:unnamed-chunk-104">Table 9.1: </span>Association Rules for SPAQ=0
+<span id="tab:unnamed-chunk-5">Table 9.1: </span>Association Rules for SPAQ=0
 </caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+lhs
+</th>
+<th style="text-align:left;">
+Var.2
+</th>
+<th style="text-align:left;">
+rhs
+</th>
+<th style="text-align:right;">
+support
+</th>
+<th style="text-align:right;">
+confidence
+</th>
+<th style="text-align:right;">
+coverage
+</th>
+<th style="text-align:right;">
+lift
+</th>
+<th style="text-align:right;">
+count
+</th>
+</tr>
+</thead>
 <tbody>
 <tr>
+<td style="text-align:left;">
+[1]
+</td>
+<td style="text-align:left;">
+{GENDER=1,CRY2=AA,socio_0.0=0}
+</td>
+<td style="text-align:left;">
+=&gt;
+</td>
+<td style="text-align:left;">
+{SPAQ=0}
+</td>
+<td style="text-align:right;">
+0.0509554
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.0509554
+</td>
+<td style="text-align:right;">
+1.938272
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+[2]
+</td>
+<td style="text-align:left;">
+{GENDER=1,VNTR=AA,socio_3.0=1}
+</td>
+<td style="text-align:left;">
+=&gt;
+</td>
+<td style="text-align:left;">
+{SPAQ=0}
+</td>
+<td style="text-align:right;">
+0.0700637
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.0700637
+</td>
+<td style="text-align:right;">
+1.938272
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+[3]
+</td>
+<td style="text-align:left;">
+{GENDER=1,SOCIOSTATUS=3,VNTR=AA}
+</td>
+<td style="text-align:left;">
+=&gt;
+</td>
+<td style="text-align:left;">
+{SPAQ=0}
+</td>
+<td style="text-align:right;">
+0.0700637
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.0700637
+</td>
+<td style="text-align:right;">
+1.938272
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+[4]
+</td>
+<td style="text-align:left;">
+{GENDER=1,PER2=AG,CLOCK3111=TT}
+</td>
+<td style="text-align:left;">
+=&gt;
+</td>
+<td style="text-align:left;">
+{SPAQ=0}
+</td>
+<td style="text-align:right;">
+0.0636943
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.0636943
+</td>
+<td style="text-align:right;">
+1.938272
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+[5]
+</td>
+<td style="text-align:left;">
+{PER3C=GG,CRY2=AA,socio_0.0=0}
+</td>
+<td style="text-align:left;">
+=&gt;
+</td>
+<td style="text-align:left;">
+{SPAQ=0}
+</td>
+<td style="text-align:right;">
+0.0700637
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.0700637
+</td>
+<td style="text-align:right;">
+1.938272
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+[6]
+</td>
+<td style="text-align:left;">
+{VNTR=BB,PER3A=CC,PER3C=GG,socio_4.0=0}
+</td>
+<td style="text-align:left;">
+=&gt;
+</td>
+<td style="text-align:left;">
+{SPAQ=0}
+</td>
+<td style="text-align:right;">
+0.0509554
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.0509554
+</td>
+<td style="text-align:right;">
+1.938272
+</td>
+<td style="text-align:right;">
+8
+</td>
 </tr>
 </tbody>
 </table>
 <table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:unnamed-chunk-106">Table 9.2: </span>Association Rules for SPAQ=1
+<span id="tab:unnamed-chunk-7">Table 9.2: </span>Association Rules for SPAQ=1
 </caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+lhs
+</th>
+<th style="text-align:left;">
+Var.2
+</th>
+<th style="text-align:left;">
+rhs
+</th>
+<th style="text-align:right;">
+support
+</th>
+<th style="text-align:right;">
+confidence
+</th>
+<th style="text-align:right;">
+coverage
+</th>
+<th style="text-align:right;">
+lift
+</th>
+<th style="text-align:right;">
+count
+</th>
+</tr>
+</thead>
 <tbody>
 <tr>
+<td style="text-align:left;">
+[1]
+</td>
+<td style="text-align:left;">
+{GENDER=0,PER3C=GT,CRY2=AA}
+</td>
+<td style="text-align:left;">
+=&gt;
+</td>
+<td style="text-align:left;">
+{SPAQ=1}
+</td>
+<td style="text-align:right;">
+0.0509554
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.0509554
+</td>
+<td style="text-align:right;">
+2.06579
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+[2]
+</td>
+<td style="text-align:left;">
+{GENDER=0,PER2=GG,CRY1=CC,socio_3.0=1}
+</td>
+<td style="text-align:left;">
+=&gt;
+</td>
+<td style="text-align:left;">
+{SPAQ=1}
+</td>
+<td style="text-align:right;">
+0.0509554
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.0509554
+</td>
+<td style="text-align:right;">
+2.06579
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+[3]
+</td>
+<td style="text-align:left;">
+{GENDER=0,SOCIOSTATUS=3,PER2=GG,CRY1=CC}
+</td>
+<td style="text-align:left;">
+=&gt;
+</td>
+<td style="text-align:left;">
+{SPAQ=1}
+</td>
+<td style="text-align:right;">
+0.0509554
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.0509554
+</td>
+<td style="text-align:right;">
+2.06579
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+[4]
+</td>
+<td style="text-align:left;">
+{GENDER=0,PER2=GG,CRY1=CC,socio_4.0=0}
+</td>
+<td style="text-align:left;">
+=&gt;
+</td>
+<td style="text-align:left;">
+{SPAQ=1}
+</td>
+<td style="text-align:right;">
+0.0573248
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.0573248
+</td>
+<td style="text-align:right;">
+2.06579
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+[5]
+</td>
+<td style="text-align:left;">
+{GENDER=0,PER3C=GT,CRY2=AA,socio_0.0=0}
+</td>
+<td style="text-align:left;">
+=&gt;
+</td>
+<td style="text-align:left;">
+{SPAQ=1}
+</td>
+<td style="text-align:right;">
+0.0509554
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.0509554
+</td>
+<td style="text-align:right;">
+2.06579
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+[6]
+</td>
+<td style="text-align:left;">
+{AGE=1,GENDER=0,PER3C=GT,CRY2=AA}
+</td>
+<td style="text-align:left;">
+=&gt;
+</td>
+<td style="text-align:left;">
+{SPAQ=1}
+</td>
+<td style="text-align:right;">
+0.0509554
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.0509554
+</td>
+<td style="text-align:right;">
+2.06579
+</td>
+<td style="text-align:right;">
+8
+</td>
 </tr>
 </tbody>
 </table>
